@@ -17,7 +17,12 @@ const userData = async (req, res) => {
     return res.status(result.status).json(result.data);
   } catch (err) {
     console.log(err.message);
+    return res.status(500);
   }
 };
 
-export default { userData };
+const test = (req, res) => {
+  return res.status(200).json({ message: "hello" });
+};
+
+export default { userData, test };
