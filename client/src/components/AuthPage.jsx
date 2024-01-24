@@ -1,8 +1,16 @@
+import { chatApi } from "../services/chatApi";
+
 const AuthPage = ({ onAuth }) => {
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     const { value } = e.target[0];
-    onAuth({ username: value, secret: value });
+
+    try {
+      const result = await chatApi.post("/authenticate", { username: value });
+      onAuth({ ...result.data, secret: value });
+    } catch (err) {
+      console.log(err.message);
+    }
   };
 
   return (
