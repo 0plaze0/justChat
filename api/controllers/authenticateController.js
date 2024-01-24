@@ -1,5 +1,6 @@
 const userData = async (req, res) => {
-  return res.json({ username: "user", sercet: "sha256..." });
+  const { username } = req.body;
+  return res.json({ username: username, sercet: "sha256..." });
 };
 
 export default { userData };
