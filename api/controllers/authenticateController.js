@@ -6,7 +6,7 @@ const userData = async (req, res) => {
 
   try {
     const result = await chatApi.put(
-      "/users",
+      "/users/",
       {
         username: username,
         sercet: username,
@@ -14,10 +14,10 @@ const userData = async (req, res) => {
       },
       { headers: { "Private-Key": process.env.PRIVATE_KEY } }
     );
+    return res.status(result.status).json(result.data);
   } catch (err) {
     console.log(err.message);
   }
-  return res.json({ username: username, sercet: "sha256..." });
 };
 
 export default { userData };
