@@ -1,7 +1,11 @@
+import { useState } from "react";
+
 import "./App.css";
+import { AuthPage } from "./components";
 
 function App() {
-  return <>JustChat</>;
+  const [user, setUser] = useState(undefined);
+  return <>{!user && <AuthPage onAuth={(user) => setUser(user)} />}</>;
 }
 
 export default App;
