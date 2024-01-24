@@ -1,4 +1,5 @@
 import { chatApi } from "../config/chatEngine.js";
+import "dotenv/config.js";
 
 const userData = async (req, res) => {
   const { username } = req.body;
@@ -11,7 +12,7 @@ const userData = async (req, res) => {
         sercet: username,
         first_name: username,
       },
-      { headers: { "Private-Key": "XXXX" } }
+      { headers: { "Private-Key": process.env.PRIVATE_KEY } }
     );
   } catch (err) {
     console.log(err.message);
