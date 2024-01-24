@@ -14,10 +14,10 @@ const userData = async (req, res) => {
       },
       { headers: { "Private-Key": process.env.PRIVATE_KEY } }
     );
+
     return res.status(result.status).json(result.data);
   } catch (err) {
-    console.log(err.message);
-    return res.status(500);
+    return res.status(err.response.status);
   }
 };
 
